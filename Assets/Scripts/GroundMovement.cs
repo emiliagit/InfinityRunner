@@ -6,7 +6,7 @@ public class GroundMovement : MonoBehaviour
 {
 
     private float groundWidth;
-    public float groundSpeed = 0.5f;
+    private float groundSpeed = 0.03f;
     // Start is called before the first frame update
     void Start()
     {
