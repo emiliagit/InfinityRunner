@@ -5,9 +5,6 @@ using UnityEngine;
 public class PowerUpInvincibility : MonoBehaviour
 {
 
-    //corregir problema con animaciones
-
-
     public float invincibilityDuration = 5f;
 
     public Animator playerAnimator;
@@ -41,30 +38,30 @@ public class PowerUpInvincibility : MonoBehaviour
             Physics.IgnoreCollision(playerCollider, obstacle, true);
         }
 
-       
         Debug.Log("corrutina activada con exito");
 
+
+        playerAnimator.SetBool("PowerUpCollected", true); // Nombre del trigger para la animación
+
+        Debug.Log("Animacion activada");
+
+        
         yield return new WaitForSeconds(invincibilityDuration);
+        Debug.Log("Corrutina terminada");
+
 
         foreach (Collider obstacle in obstacles)
         {
             Physics.IgnoreCollision(playerCollider, obstacle, false);
         }
 
-        if (playerAnimator != null)
-        {
-            playerAnimator.SetTrigger("PowerUpCollected"); // Nombre del trigger para la animación
-
-            Debug.Log("Animacion activada");
-
-            playerAnimator.SetTrigger("PowerUpEnd"); // Nombre del trigger para la animación
-        }
+        playerAnimator.SetBool("PowerUpCollected", false); // Nombre del trigger para la animación
 
 
-        
 
-       
+
+
     }
 
-    
+
 }
