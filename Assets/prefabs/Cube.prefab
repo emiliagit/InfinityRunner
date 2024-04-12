@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7680458606536068344}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0857911, y: 1.0367465, z: 1.1429862}
+  m_Center: {x: -0.000300169, y: 0.00065365434, z: 0.0103414655}
 --- !u!114 &-7680458606536068344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8120a5102c52db4c949d4c27149cece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScrollSpeed: 6
+  ScrollSpeed: 3
   accelerationRate: 0.5

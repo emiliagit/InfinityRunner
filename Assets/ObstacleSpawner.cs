@@ -38,9 +38,5 @@ public class ObstacleSpawner : MonoBehaviour
             yield return new WaitForSeconds(randomTime);
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
