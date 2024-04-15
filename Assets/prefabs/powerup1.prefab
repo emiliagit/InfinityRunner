@@ -101,7 +101,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97297c297647e8429d5cde59ddd17d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityDuration: 5
+  PlayerAnimator: {fileID: 5426318362402736024, guid: c84c3359f73d9ba44ac932172367ab46, type: 3}
+  triggerDuration: 5
 --- !u!114 &6259576251090311670
 MonoBehaviour:
   m_ObjectHideFlags: 0

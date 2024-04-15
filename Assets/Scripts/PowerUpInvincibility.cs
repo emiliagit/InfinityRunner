@@ -5,63 +5,47 @@ using UnityEngine;
 public class PowerUpInvincibility : MonoBehaviour
 {
 
-    public float invincibilityDuration = 5f;
+    public Animator PlayerAnimator;
+    public float triggerDuration = 5f;
 
-    public Animator playerAnimator;
+    private Collider playerCollider;
+    private bool isCoroutineRunning = false;
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(GrantInvincibility(collision.collider));
-            gameObject.SetActive(false); //desactivar power up despues de ser recolectado
 
+        playerCollider = GetComponent<Collider>();
+    }
+
+    private void OnTriggerEnter(Collider Other)
+    {
+        if (Other.CompareTag("Player") && !isCoroutineRunning)
+        {
+            StartCoroutine(ActivateTriggerCollider());
         }
     }
 
-    private IEnumerator GrantInvincibility(Collider playerCollider)
+    private IEnumerator ActivateTriggerCollider()
     {
+        isCoroutineRunning = true;
 
-        // Obtener todos los colliders con la etiqueta "Obstaculos"
-        GameObject[] obstacleObjects = GameObject.FindGameObjectsWithTag("Obstaculo");
-        Collider[] obstacles = new Collider[obstacleObjects.Length];
+        PlayerAnimator.SetBool("IsActivated", true);
 
-        // Obtener los colliders de los objetos encontrados
-        for (int i = 0; i < obstacleObjects.Length; i++)
-        {
-            obstacles[i] = obstacleObjects[i].GetComponent<Collider>();
-        }
+        // Cambiar el collider del jugador a trigger
+        playerCollider.isTrigger = true;
 
-        foreach (Collider obstacle in obstacles)
-        {
-            Physics.IgnoreCollision(playerCollider, obstacle, true);
-        }
+        yield return new WaitForSeconds(triggerDuration);
 
-        Debug.Log("corrutina activada con exito");
+        // Restaurar el collider del jugador a su estado original (no trigger)
+        playerCollider.isTrigger = false;
 
+        isCoroutineRunning = false;
 
-        playerAnimator.SetBool("PowerUpCollected", true); // Nombre del trigger para la animación
-
-        Debug.Log("Animacion activada");
-
-        
-        yield return new WaitForSeconds(invincibilityDuration);
-        Debug.Log("Corrutina terminada");
-
-
-        foreach (Collider obstacle in obstacles)
-        {
-            Physics.IgnoreCollision(playerCollider, obstacle, false);
-        }
-
-        playerAnimator.SetBool("PowerUpCollected", false); // Nombre del trigger para la animación
-
-
-
-
-
+        PlayerAnimator.SetBool("IsActivated", false);
     }
-
 
 }
+
+
+
+
