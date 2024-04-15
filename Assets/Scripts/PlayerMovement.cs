@@ -6,11 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10.0f;
 
-    //public float minX = -5.0f;
-    //public float maxX = 5.0f;
-    //public float minZ = -5.0f;
-    //public float maxZ = 5.0f;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,9 +18,6 @@ public class PlayerMovement : MonoBehaviour
 
         MovAdelanteAtras *= Time.deltaTime;
         MovIzqDer *= Time.deltaTime;
-
-        //Vector3 newPosition = transform.position + new Vector3(MovIzqDer, 0, MovAdelanteAtras);
-
 
 
         transform.Translate(MovIzqDer, 0, MovAdelanteAtras);
