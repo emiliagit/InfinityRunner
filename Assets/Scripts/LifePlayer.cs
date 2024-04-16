@@ -14,6 +14,7 @@ public class LifePlayer : MonoBehaviour
     void Start()
     {
         health = 4;
+        ListaCorazones = new List<GameObject>();
         RestarCorazones(health );
     }
 
