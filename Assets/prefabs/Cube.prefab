@@ -133,7 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d44b2b93b9b0c4fb0906911c5a3921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 5426318362402736024, guid: c84c3359f73d9ba44ac932172367ab46, type: 3}
-  animationDuration: 2
-  delay: 2
-  lifePlayer: {fileID: 0}
+  powerUpPrefab: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+  powerUpDuration: 2

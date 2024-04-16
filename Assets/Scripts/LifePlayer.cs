@@ -6,63 +6,105 @@ using UnityEngine.UI;
 
 public class LifePlayer : MonoBehaviour
 {
+    public List<GameObject> healthObjects; // Lista de objetos de vida
+    public GameObject healthPrefab;
+   
+    private int maxHealth = 4;
+    private int currentHealth;
+    private List<Image> healthImages; //Esta lista almacena los componentes Image de los GameObjects en la lista healthObjects
 
-    public GameObject[] ListaCorazones;
-    //public List<GameObject> ListaCorazones;
-    public Sprite CorazonDesactivado;
-    private int health;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        health = 4;
-        //ListaCorazones = new List<GameObject>();
-        RestarCorazones(health );
+        currentHealth = maxHealth;
+        InitializeHealthImages();
+        UpdateHealthUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Método para que el jugador reciba daño
+    public void TakeDamage(int daño)
     {
-        if (health > 100)
+        if (currentHealth > 0)
         {
-            health = 100; //pone limite a la cantidad de vida
+            currentHealth--;
+            RemoveHealthObject();
+            UpdateHealthUI();
         }
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
-            SceneManager.LoadScene("Derrota");
-
-            Cursor.lockState = CursorLockMode.None;
-        }
-        RestarCorazones(health);
-
-    }
-
-    public void RestarCorazones(int indice)
-    {
-        if (indice >= 0/* && indice < ListaCorazones.Length*/)
-        {
-            GameObject corazon = ListaCorazones[indice];
-
-            Image imagenCorazon = corazon.GetComponent<Image>();
-
-            imagenCorazon.sprite = CorazonDesactivado;
-        }
-        else
-        {
-            Debug.Log("lista null");
+            // Aquí puedes manejar la muerte del jugador
         }
     }
 
-    public void RecibirDanio(int dmg)
+    public void CollectHealth()
     {
-        health -= dmg;
-        RestarCorazones(health);
+        if (currentHealth < maxHealth)
+        {
+            currentHealth++;
+            //AddHealthObject();
+            UpdateHealthUI();
+        }
     }
 
-    //public void Curar(int heal)
+    private void InitializeHealthImages()
+    {
+        healthImages = new List<Image>();
+
+        // Recorre la lista de objetos de vida y obtiene sus componentes Image
+        foreach (GameObject healthObject in healthObjects)
+        {
+            Image image = healthObject.GetComponent<Image>();
+            if (image != null)
+            {
+                healthImages.Add(image);
+            }
+        }
+
+        // Llena la lista con imágenes vacías si es necesario
+        while (healthImages.Count < maxHealth)
+        {
+            // Crea una nueva imagen vacía y la agrega a la lista
+            healthImages.Add(null);
+        }
+
+
+    }
+
+    private void RemoveHealthObject()
+    {
+        if (healthImages.Count > 0)
+        {
+            Image removedImage = healthImages[healthImages.Count - 1];
+            healthImages.RemoveAt(healthImages.Count - 1);
+            Destroy(removedImage.gameObject);
+        }
+    }
+
+    //Método para agregar un objeto de vida a la pantalla
+    //private void AddHealthObject()
     //{
-    //    hp += heal;
-    //    RestarCorazones(hp);
+    //    if (healthImages.Count < maxHealth)
+    //    {
+    //        // Se crea una nueva imagen y se agrega a la lista
+    //        Image newImage = Instantiate(healthPrefab, healthPrefab.transform.parent).GetComponent<Image>();
+    //        healthImages.Add(newImage);
+    //    }
     //}
+
+    // Método para actualizar la interfaz de usuario de la vida del jugador
+    private void UpdateHealthUI()
+    {
+        // Recorre todas las imágenes de vida y las activa o desactiva según la cantidad actual de vida del jugador
+        for (int i = 0; i < maxHealth; i++)
+        {
+            if (i < currentHealth)
+            {
+                healthImages[i].enabled = true;
+            }
+            else
+            {
+                healthImages[i].enabled = false;
+            }
+        }
+    }
 }

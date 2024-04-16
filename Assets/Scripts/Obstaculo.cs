@@ -4,52 +4,28 @@ using UnityEngine;
 
 public class Obstaculo : MonoBehaviour
 {
-    public Animator playerAnimator;
-    //public float animationDuration = 2f;
-    //public GameManager gameManager; 
+    public GameObject powerUpPrefab;
+    public float powerUpDuration = 2f; 
+    private bool hasCollided = false;
 
-    private bool isCollisionHandled = false;
-    public float delay = 2f;
+    private LifePlayer player;
 
-    //private LifePlayer lifePlayer;
-
-    private void Start()
-    {
-        //lifePlayer = GetComponent<LifePlayer>();
-
-    }
     private void OnCollisionEnter(Collision collision)
     {
-       
-        if (!isCollisionHandled && collision.collider.CompareTag("Player"))
+        if (!hasCollided && collision.gameObject.CompareTag("Player"))
         {
+            // Instanciar el prefab de la animación del power-up
+            Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
 
-            if (collision.gameObject.TryGetComponent(out LifePlayer player))
-            {
-                player.RecibirDanio(1);
-            }
+            player.TakeDamage(1);
 
-            StartCoroutine(damagePlayer());
-           
+            // Eliminar el objeto que colisionó (el power-up)
             Destroy(gameObject);
 
-            //gameManager.DecreaseLife();
+
+            hasCollided = true;
         }
     }
-    IEnumerator damagePlayer() 
-    {
-
-        isCollisionHandled = true;
-
-        playerAnimator.SetBool("Hit", true);
-
-        //lifePlayer.RecibirDanio(1);
-
-        yield return new WaitForSeconds(delay);
-
-        playerAnimator.SetBool("Hit", false);
-
-    }
-
-
 }
+
+   
