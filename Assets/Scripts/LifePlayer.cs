@@ -6,46 +6,52 @@ using UnityEngine.UI;
 
 public class LifePlayer : MonoBehaviour
 {
-
     public List<GameObject> ListaCorazones;
     public Sprite CorazonDesactivado;
-    private int hp;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        hp = 4;
-        RestarCorazones(hp);
+        health = 4;
+        RestarCorazones(health );
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp > 100)
+        if (health > 100)
         {
-            hp = 100; //pone limite a la cantidad de vida
+            health = 100; //pone limite a la cantidad de vida
         }
 
-        if (hp <= 0)
+        if (health <= 0)
         {
             SceneManager.LoadScene("Derrota");
 
             Cursor.lockState = CursorLockMode.None;
         }
-        RestarCorazones(hp);
+        RestarCorazones(health);
 
     }
 
     public void RestarCorazones(int indice)
     {
-        Image imagenCorazon = ListaCorazones[indice].GetComponent<Image>();
-        imagenCorazon.sprite = CorazonDesactivado;
+        if (indice >= 0 && indice < ListaCorazones.Count && indice >= 0)
+        {
+            Image imagenCorazon = ListaCorazones[indice].GetComponent<Image>();
+            imagenCorazon.sprite = CorazonDesactivado;
+        }
+        else
+        {
+            Debug.Log("lista null");
+        }
     }
 
     public void RecibirDanio(int dmg)
     {
-        hp -= dmg;
-        RestarCorazones(hp);
+        health -= dmg;
+        RestarCorazones(health);
     }
 
     //public void Curar(int heal)

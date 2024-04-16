@@ -22,6 +22,7 @@ public class PowerUpInvincibility : MonoBehaviour
         if (Other.CompareTag("Player") && !isCoroutineRunning)
         {
             StartCoroutine(ActivateTriggerCollider());
+            Destroy(gameObject);
         }
     }
 

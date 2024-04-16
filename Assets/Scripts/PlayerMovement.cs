@@ -27,14 +27,14 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
-
-    //modificar la condicion de muerte para que este en el script del obstaculo
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Obstaculo"))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
+
+//    private void OnCollisionEnter(Collision collision)
+//    {
+//        if(collision.collider.CompareTag("Obstaculo"))
+//        {
+//            animator.SetBool("Hit", true);
+//        }
+//    }
+//}
+
