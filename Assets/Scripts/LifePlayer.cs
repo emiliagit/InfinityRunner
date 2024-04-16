@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class LifePlayer : MonoBehaviour
 {
-    public List<GameObject> ListaCorazones;
+
+    public GameObject[] ListaCorazones;
+    //public List<GameObject> ListaCorazones;
     public Sprite CorazonDesactivado;
     private int health;
 
@@ -14,7 +16,7 @@ public class LifePlayer : MonoBehaviour
     void Start()
     {
         health = 4;
-        ListaCorazones = new List<GameObject>();
+        //ListaCorazones = new List<GameObject>();
         RestarCorazones(health );
     }
 
@@ -38,9 +40,12 @@ public class LifePlayer : MonoBehaviour
 
     public void RestarCorazones(int indice)
     {
-        if (indice >= 0 && indice < ListaCorazones.Count && indice >= 0)
+        if (indice >= 0/* && indice < ListaCorazones.Length*/)
         {
-            Image imagenCorazon = ListaCorazones[indice].GetComponent<Image>();
+            GameObject corazon = ListaCorazones[indice];
+
+            Image imagenCorazon = corazon.GetComponent<Image>();
+
             imagenCorazon.sprite = CorazonDesactivado;
         }
         else
