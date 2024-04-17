@@ -234,7 +234,6 @@ RectTransform:
   m_Children:
   - {fileID: 2096711087}
   - {fileID: 1521831256}
-  - {fileID: 1792416476}
   - {fileID: 1982875460}
   - {fileID: 1141033735}
   - {fileID: 402341368}
@@ -760,6 +759,7 @@ MonoBehaviour:
   - {fileID: 1141033736}
   - {fileID: 402341369}
   - {fileID: 1463837573}
+  powerUp: {fileID: 0}
 --- !u!54 &1082120666
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -822,21 +822,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1082120672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082120662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97297c297647e8429d5cde59ddd17d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPowerUp: {fileID: 100000, guid: c9fda59c7a8ae6541ba43453ee86c60e, type: 3}
-  PlayerAnimator: {fileID: 1082120671}
-  triggerDuration: 5
 --- !u!1 &1141033734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,86 +1100,6 @@ RectTransform:
   m_AnchoredPosition: {x: -182, y: -118}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1632216762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1632216764}
-  - component: {fileID: 1632216763}
-  m_Layer: 0
-  m_Name: Spawn Power-Ups
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1632216763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632216762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9528cc88ae96fce48b340db05520908d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpPrefab:
-  - {fileID: 100008, guid: 879451a5e2214f143a7edf5dd3e32020, type: 3}
-  SpawnInterval: 10
-  MinX: -1.5
-  maxX: 1.5
---- !u!4 &1632216764
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632216762}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.259, z: 32.660137}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1792416475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1792416476}
-  m_Layer: 0
-  m_Name: Vidas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1792416476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792416475}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.11205208, y: 0, z: -0, w: 0.9937024}
-  m_LocalPosition: {x: -702, y: 460.00006, z: -0.000020360301}
-  m_LocalScale: {x: 14.232882, y: 14.232882, z: 14.232882}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 368169116}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1914975455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,9 +1183,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1646981259178978, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1082120671}
-    - targetCorrespondingSourceObject: {fileID: 1646981259178978, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1082120672}
   m_SourcePrefab: {fileID: 100100000, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
 --- !u!1 &1982875459
 GameObject:
@@ -1562,4 +1464,3 @@ SceneRoots:
   - {fileID: 725246399}
   - {fileID: 1914975455}
   - {fileID: 559940435}
-  - {fileID: 1632216764}

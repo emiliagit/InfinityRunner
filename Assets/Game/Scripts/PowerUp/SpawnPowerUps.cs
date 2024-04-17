@@ -5,20 +5,23 @@ using UnityEngine;
 public class SpawnPowerUps : MonoBehaviour
 {
 
-    public GameObject[] powerUpPrefab;
-    public float SpawnInterval = 10f;
+    public GameObject powerUpPrefab;
+    //public float SpawnInterval = 10f;
 
 
-    public float MinX = -1.0f;
-    public float maxX = 1.0f;
+    private float MinX = -4f;
+    private float maxX = 4f;
 
-    private float minTime = 1f;
-    private float maxTime = 2f;
+    private float minTime = 10f;
+    private float maxTime = 20f;
+
+    public float delay;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //delay = 10f;
         StartCoroutine(spawnPowerUp());
     }
 
@@ -27,20 +30,18 @@ public class SpawnPowerUps : MonoBehaviour
     {
         while (true)
         {
-            int randomindex = Random.Range(0, powerUpPrefab.Length);
-           
+            delay = 10f;
+
             float randomTime = Random.Range(minTime, maxTime);
 
-            if (randomindex == powerUpPrefab.Length - 1)
-            {
+            
                 Vector3 spawnPosition = transform.position;
-                spawnPosition.x = Random.Range(MinX, maxX) * powerUpPrefab[randomindex].transform.localScale.x;
-                Instantiate(powerUpPrefab[randomindex], spawnPosition, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(powerUpPrefab[randomindex], transform.position, Quaternion.identity);
-            }
+                spawnPosition.x = Random.Range(MinX, maxX);
+                Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity);
+            
+           
+                //Instantiate(powerUpPrefab[randomindex], transform.position, Quaternion.identity);
+       
             yield return new WaitForSeconds(randomTime);
         }
     }

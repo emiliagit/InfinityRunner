@@ -10,24 +10,28 @@ public class LifePlayer : MonoBehaviour
 
     private int maxHealth = 4;
     private int currentHealth;
+
+    
+   
    
     private void Start()
     {
         currentHealth = maxHealth;
         UpdateLife(currentHealth);
-        //UpdateHealthUI();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Método para que el jugador reciba daño
-    public void TakeDamage(int daño)
+    public void TakeDamage(int daño )
     {
+        
+
         if (currentHealth > 0)
         {
             currentHealth--;
-            //RemoveHealthObject();
-            //UpdateHealthUI();
+            UpdateLife(currentHealth);
         }
+
 
         if (currentHealth <= 0)
         {
@@ -35,82 +39,21 @@ public class LifePlayer : MonoBehaviour
         }
     }
 
-    public void CollectHealth()
-    {
-        if (currentHealth < maxHealth)
-        {
-            currentHealth++;
-            //UpdateHealthUI();
-        }
-    }
-
-    //private void InitializeHealthImages()
-    //{
-    //    healthImages = new List<Image>();
-
-    //    // Recorre la lista de objetos de vida y obtiene sus componentes Image
-    //    foreach (GameObject healthObject in healthObjects)
-    //    {
-    //        Image image = healthObject.GetComponent<Image>();
-    //        if (image != null)
-    //        {
-    //            healthImages.Add(image);
-    //        }
-    //    }
-
-    //    // Llena la lista con imágenes vacías si es necesario
-    //    while (healthImages.Count < maxHealth)
-    //    {
-    //        // Crea una nueva imagen vacía y la agrega a la lista
-    //        healthImages.Add(null);
-    //    }
-
-
-    //}
-
-
+    
     public void UpdateLife(int hp)
     {
-        foreach (RawImage heart in hearts)
+       
+
+        for (int i = 0; i < hearts.Length; i++)
         {
-            heart.enabled = false;
+            if (i < hp)
+                hearts[i].gameObject.SetActive(true);
+            else
+                hearts[i].gameObject.SetActive(false);
         }
 
-        for (int i = 0; i < hp; i++)
-        {
-            if (i < hearts.Length)
-            {
-                hearts[i].enabled = true;
-            }
-        }
     }
 
-    //private void RemoveHealthObject()
-    //{
-    //    if (hearts.Length > 0)
-    //    {
-    //        //RawImage removedImage = hearts[hearts.Length - 1];
-    //        System.Array.Resize(ref hearts, hearts.Length - 1);
-    //        Destroy(removedImage.gameObject);
-    //    }
-    //}
-
-
-    // Método para actualizar la interfaz de usuario de la vida del jugador
-    //private void UpdateHealthUI()
-    //{
-    //    // Recorre todas las imágenes de vida y las activa o desactiva según la cantidad actual de vida del jugador
-    //    for (int i = 0; i < maxHealth; i++)
-    //    {
-    //        if (i < currentHealth)
-    //        {
-    //            hearts[i].enabled = true;
-    //        }
-    //        else
-    //        {
-    //            hearts[i].enabled = false;
-    //        }
-    //    }
-    //}
+   
 }
 
