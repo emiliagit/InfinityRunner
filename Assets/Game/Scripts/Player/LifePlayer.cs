@@ -6,10 +6,7 @@ using UnityEngine.UI;
 
 public class LifePlayer : MonoBehaviour
 {
-    [SerializeField] Sprite[] hearts;
-
-
-
+    [SerializeField] RawImage[] hearts;
 
     private int maxHealth = 4;
     private int currentHealth;
@@ -17,7 +14,7 @@ public class LifePlayer : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        //UpdateLife(currentHealth);
+        UpdateLife(currentHealth);
         //UpdateHealthUI();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -34,7 +31,7 @@ public class LifePlayer : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            // Aquí puedes manejar la muerte del jugador
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 
@@ -72,21 +69,21 @@ public class LifePlayer : MonoBehaviour
     //}
 
 
-    //public void UpdateLife(int hp)
-    //{
-    //    foreach (Sprite heart in hearts)
-    //    {
-    //        heart.enabled = false;
-    //    }
+    public void UpdateLife(int hp)
+    {
+        foreach (RawImage heart in hearts)
+        {
+            heart.enabled = false;
+        }
 
-    //    for (int i = 0; i < hp; i++)
-    //    {
-    //        if (i < hearts.Length)
-    //        {
-    //            hearts[i].enabled = true;
-    //        }
-    //    }
-    //}
+        for (int i = 0; i < hp; i++)
+        {
+            if (i < hearts.Length)
+            {
+                hearts[i].enabled = true;
+            }
+        }
+    }
 
     //private void RemoveHealthObject()
     //{
