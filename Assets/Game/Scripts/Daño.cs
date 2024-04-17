@@ -6,11 +6,11 @@ public class Daño : MonoBehaviour
 {
     public GameObject explosionPrefab;
 
-    private LifePlayer player;
+    public LifePlayer player;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Obstaculo"))
+        if (other.gameObject.CompareTag("Obstaculo"))
         {
             // Instanciar el prefab de la animación del power-up
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
@@ -21,7 +21,7 @@ public class Daño : MonoBehaviour
             player.TakeDamage(1);
 
             // Eliminar el objeto que colisionó 
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
 
         }
     }

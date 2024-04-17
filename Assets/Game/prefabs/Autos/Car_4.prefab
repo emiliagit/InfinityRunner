@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4870167790249810}
   - component: {fileID: -6245221580051064425}
-  - component: {fileID: -8354314755606769922}
+  - component: {fileID: 8507574704135087104}
   m_Layer: 0
   m_Name: Car_4
   m_TagString: Untagged
@@ -467,17 +467,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScrollSpeed: 6
   accelerationRate: 0.5
---- !u!114 &-8354314755606769922
-MonoBehaviour:
+--- !u!65 &8507574704135087104
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646981259178978}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35d44b2b93b9b0c4fb0906911c5a3921, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpPrefab: {fileID: 0}
-  powerUpDuration: 2
+  serializedVersion: 3
+  m_Size: {x: 0.9456597, y: 0.5055282, z: 2.443674}
+  m_Center: {x: 0.0026028454, y: 0.44292533, z: 0.008037567}
