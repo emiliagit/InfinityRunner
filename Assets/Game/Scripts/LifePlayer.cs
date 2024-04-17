@@ -107,4 +107,19 @@ public class LifePlayer : MonoBehaviour
             }
         }
     }
-}
+
+    //public void UpdateLife(int hp)
+    //{
+    //    foreach (RawImage heart in hearts)
+    //    {
+    //        heart.enabled = false;
+    //    }
+
+    //    for (int i = 0; i < hp; i++)
+    //    {
+    //        if (i < hearts.Length)
+    //        {
+    //            hearts[i].enabled = true;
+    //        }
+    //    }
+    //}
