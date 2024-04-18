@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarScroll : MonoBehaviour
 {
 
-    public float ScrollSpeed = 6.0f;
+    public float ScrollSpeed = 8.0f;
     public float accelerationRate = 0.5f;
     private float TimeElapsed = 0f;
 
