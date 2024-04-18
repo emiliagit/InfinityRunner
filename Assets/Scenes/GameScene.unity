@@ -642,6 +642,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -716,13 +717,22 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14666495, y: -0, z: -0, w: 0.9891862}
+  m_LocalRotation: {x: 0.1495346, y: -0, z: -0, w: 0.98875654}
   m_LocalPosition: {x: -0.02, y: 6.27, z: -32.54}
   m_LocalScale: {x: 1, y: 1, z: 1.2182}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 16.867, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.2, y: 0, z: 0}
+--- !u!45 &963194229
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: bbe9494f815f3c340956427c884b72a0, type: 2}
 --- !u!1 &1082120662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1646981259178978, guid: f463242ba59e68243b7a693d4f0cfc18, type: 3}
@@ -759,7 +769,6 @@ MonoBehaviour:
   - {fileID: 1141033736}
   - {fileID: 402341369}
   - {fileID: 1463837573}
-  powerUp: {fileID: 0}
 --- !u!54 &1082120666
 Rigidbody:
   m_ObjectHideFlags: 0
